@@ -3,7 +3,6 @@ from dataclasses import dataclass
 
 @dataclass
 class Point:
-    """Represents a geographic node with id and coordinates."""
     id: int
     lat: float
     lon: float

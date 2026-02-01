@@ -1,4 +1,3 @@
-# AStar.py
 import heapq
 from typing import Dict, List, Tuple
 
@@ -9,7 +8,6 @@ def astar(adj: Dict[int, List[Tuple[int, float]]],
           nodes: Dict[int, Point],
           start: int,
           goal: int) -> Tuple[List[int], float]:
-    """A* on adjacency list. Returns (path_node_list, total_cost_m)."""
     if start == goal:
         return [start], 0.0
 
@@ -24,7 +22,6 @@ def astar(adj: Dict[int, List[Tuple[int, float]]],
     while open_heap:
         f, g, current, parent = heapq.heappop(open_heap)
 
-        # skip outdated heap entries
         if g > g_score.get(current, float('inf')) + 1e-9:
             continue
 
@@ -32,7 +29,6 @@ def astar(adj: Dict[int, List[Tuple[int, float]]],
             came_from[current] = parent
 
         if current == goal:
-            # reconstruct
             path = [current]
             while path[-1] in came_from:
                 path.append(came_from[path[-1]])
